@@ -1,0 +1,67 @@
+{% extends "base.html" %} {% load static %} {% block content %}
+
+<!-- Page header section start -->
+<section
+  class="page-header-section set-bg"
+  data-setbg="{% static 'img/header-bg.jpg' %}"
+>
+  <div class="container">
+    <h1 class="header-title">Réalisations<span>.</span></h1>
+  </div>
+</section>
+<!-- Page header section end -->
+
+<!-- Page section start -->
+<div class="page-section spad">
+  <div class="container">
+    <!-- menu des filtres -->
+    <ul class="portfolio-filter">
+      <li class="filter" data-filter="*">Tout</li>
+      <li class="filter" data-filter=".photo">Photographie</li>
+      <li class="filter" data-filter=".design">Design</li>
+      <li class="filter" data-filter=".identite">Identité</li>
+      <li class="filter" data-filter=".corporate">Corporate</li>
+      <li class="filter" data-filter=".uxui">UI/UX</li>
+    </ul>
+  </div>
+
+  <!-- éléments portfolio -->
+  <div class="portfolio-warp spad">
+    <div id="portfolio">
+      <div class="grid-sizer"></div>
+      {% for item in realisations %}
+      <div
+        class="grid-item set-bg 
+                 {{ item.categorie }} 
+                 {% if item.est_large %}grid-wide{% endif %} 
+                 {% if item.est_long %}grid-long{% endif %}"
+        data-setbg="{{ item.image.url }}"
+      >
+        <a
+          class="img-popup"
+          href="{{ item.image.url }}"
+          title="{{ item.texte_alt }}"
+        ></a>
+      </div>
+      {% empty %}
+      <p class="text-center">Aucune réalisation disponible pour le moment.</p>
+      {% endfor %}
+    </div>
+  </div>
+
+  <!-- pagination -->
+  <div class="container">
+    <div class="pagination">
+      {% if realisations.has_previous %}
+      <a href="?page={{ realisations.previous_page_number }}">Précédent</a>
+      {% endif %}
+
+      <span class="active">{{ realisations.number }}</span>
+
+      {% if realisations.has_next %}
+      <a href="?page={{ realisations.next_page_number }}">Suivant</a>
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% endblock %}

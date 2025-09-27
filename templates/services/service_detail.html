@@ -1,0 +1,86 @@
+{% extends "base.html" %} {% load static %} {% block content %}
+
+        <!-- Page header section start -->
+        <section
+          class="page-header-section set-bg"
+          data-setbg="{{ service.image.url }}"
+        >
+          <div class="container">
+            <h1 class="header-title">{{ service.titre }}<span>.</span></h1>
+          </div>
+        </section>
+        <!-- Page header section end -->
+
+        <!-- Service Detail section start -->
+        <section class="service-detail-section spad">
+          <div class="container">
+            <div class="row">
+              <!-- Main content -->
+              <div class="col-lg-8">
+                <div class="service-detail">
+                  <h2>{{ service.titre }}</h2>
+                  <p>{{ service.description|linebreaks }}</p>
+                </div>
+              </div>
+
+   
+
+
+                  </div>
+                </aside>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- Service Detail section end -->
+<!-- Page section start -->
+<div class="page-section spad">
+  <div class="container">
+    <!-- portfolio filter menu -->
+    <ul class="portfolio-filter">
+      <li class="filter" data-filter="*">Tous</li>
+      {% for code, name in categories %}
+        <li class="filter" data-filter=".{{ code }}">{{ name }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+
+  <!-- portfolio items -->
+  <div class="portfolio-warp spad">
+    <div id="portfolio">
+      <div class="grid-sizer"></div>
+
+      {% for real in realisations %}
+        <div 
+          class="grid-item set-bg
+                 {% if real.est_large %}grid-wide{% endif %}
+                 {% if real.est_long %}grid-long{% endif %}
+                 {{ real.categorie }}"
+          data-setbg="{{ real.image.url }}"
+        >
+          <a class="img-popup" href="{{ real.image.url }}" title="{{ real.texte_alt }}"></a>
+        </div>
+      {% endfor %}
+
+    </div>
+  </div>
+
+  <!-- pagination -->
+  <div class="container">
+    <div class="pagination">
+      {% if page_obj.has_previous %}
+        <a href="?page={{ page_obj.previous_page_number }}">« Précédent</a>
+      {% endif %}
+
+      {% for num in page_obj.paginator.page_range %}
+        {% if page_obj.number == num %}
+          <a href="?page={{ num }}" class="active">{{ num }}</a>
+        {% else %}
+          <a href="?page={{ num }}">{{ num }}</a>
+        {% endif %}
+      {% endfor %}
+
+      {% if page_obj.has_next %}
+
+
+{% endblock %}
