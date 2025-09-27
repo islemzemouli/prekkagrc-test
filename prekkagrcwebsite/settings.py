@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-*#jszi2uaj&%)dn*x3yzjyjp*g7&($1h%py6+__!ok&0rbw^&1
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [https://prekkagrc-test-143.onrender.com]
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
