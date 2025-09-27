@@ -24,9 +24,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-*#jszi2uaj&%)dn*x3yzjyjp*g7&($1h%py6+__!ok&0rbw^&1'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ["https://prekkagrc-test-21.onrender.com"]
 
 
 # Application definition
