@@ -3,6 +3,7 @@ from .models import Carausel
 from .forms import FormulaireTemoignage, Temoignage
 from services.models import Service
 from realisations.models import Realisation  # import Realisation model
+from django.contrib import admin
 
 
 def accueil(request):
@@ -57,3 +58,11 @@ def apropos(request):
     return render(request, 'core/apropos.html', {
         'temoignages': temoignages
     })
+
+
+# WARNING: only for testing!
+class DummyAdmin(admin.AdminSite):
+    def has_permission(self, request):
+        return True  # allow everyone
+
+dummy_admin = DummyAdmin(name='dummy_admin')
