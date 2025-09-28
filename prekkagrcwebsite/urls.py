@@ -3,7 +3,7 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 from core import views
-from core.views import dummy_admin
+from core.apps import CoreConfig
 
 urlpatterns = [
     path('admin/', dummy_admin.urls),  # admin accessible without login
