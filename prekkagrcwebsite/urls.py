@@ -3,9 +3,10 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 from core import views
+from core.views import dummy_admin
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('admin/', dummy_admin.urls),  # admin accessible without login
     path('', include('core.urls')),  # core.urls must be
     path("services/", include("services.urls")),
     path('blog/', include('blog.urls')),  # toutes les URLs de l'app blog
