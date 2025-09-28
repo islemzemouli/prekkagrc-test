@@ -6,7 +6,7 @@ from core import views
 from core.apps import CoreConfig
 
 urlpatterns = [
-    path('admin/', dummy_admin.urls),  # admin accessible without login
+    path('admin/', CoreConfig.default_app_config.dummy_admin.urls),
     path('', include('core.urls')),  # core.urls must be
     path("services/", include("services.urls")),
     path('blog/', include('blog.urls')),  # toutes les URLs de l'app blog
